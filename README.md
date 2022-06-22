@@ -1,5 +1,5 @@
 # desafioTrybe
-Desafio Full Stack - Todo List Trybe
+Desafio Full Stack - Task List Trybe
 
 --------------------- // ---------------------
 ## Requisitos do Desafio:
