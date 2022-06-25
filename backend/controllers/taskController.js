@@ -2,7 +2,6 @@ const taskService = require('../services/taskService');
 
 const getAll = async (_req, res) => {
   const tasks = await taskService.getAll();
-
   return res.status(200).json(tasks);
 };
 
@@ -17,9 +16,6 @@ const getById = async (req, res) => {
 
 const addOne = async (req, res) => {
   const task = await taskService.addOne(req.body);
-  if (!task) {
-    return res.status(409).json({ message: 'task already exists' });
-  }
   return res.status(201).json(task);
 };
 

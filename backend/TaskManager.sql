@@ -1,0 +1,15 @@
+DROP DATABASE IF EXISTS TaskManager;
+
+CREATE DATABASE TaskManager;
+
+USE TaskManager;
+
+CREATE TABLE tasks (
+    id INT NOT NULL auto_increment,
+    title VARCHAR(99) NOT NULL,
+    type VARCHAR(40) NOT NULL,
+    date VARCHAR(20) NOT NULL,
+    PRIMARY KEY(id)
+) ENGINE=INNODB;
+
+SET SQL_SAFE_UPDATES = 0;

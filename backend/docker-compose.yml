@@ -6,7 +6,7 @@ services:
     # Imagem base do container
     image: node:16
     # Nome do container para facilitar execução
-    container_name: store_manager
+    container_name: task_manager
     # Mesmo que `docker run -t`
     tty: true
     # Mesmo que `docker run -i`
@@ -30,17 +30,17 @@ services:
     # na notação porta_de_fora:porta_de_dentro
     ports:
       # Expõe a porta padrão da aplicação: altere aqui caso use outra porta
-      - 3000:3000
+      - 3001:3001
     # Configura as variáveis de ambiente dentro do container
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_HOST: db # Nome do service logo abaixo
-      PORT: '3000'
+      PORT: '3001'
 
   # Serviço que irá rodar o banco de dados
   db:
-    container_name: store_manager_db
+    container_name: task_manager_db
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: 'password'
@@ -54,6 +54,6 @@ networks:
   # Rede padrão, criada automaticamente
   default:
     # Dá um nome específico à rede padrão
-    name: store_manager_net
+    name: task_manager_net
 
 # Esse arquivo foi reaproveitado de um projeto da Trybe

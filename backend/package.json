@@ -1,7 +1,7 @@
 {
-  "name": "sd-0x-store-manager",
+  "name": "desafio-trybe",
   "version": "1.0.0",
-  "description": "Simple CRUD to sales and products",
+  "description": "Simple CRUD to tasks",
   "main": "index.js",
   "scripts": {
     "posttest": "node ./test/restoreDb.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tryber/sd-02-project-store-manager.git"
+    "url": "git+https://github.com/FelipeCastanheira/desafioTrybe.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tryber/sd-02-project-store-manager/issues"
+    "url": "https://github.com/FelipeCastanheira/desafioTrybe/issues"
   },
-  "homepage": "https://github.com/tryber/sd-02-project-store-manager#readme",
+  "homepage": "https://github.com/FelipeCastanheira/desafioTrybe#readme",
   "dependencies": {
     "@hapi/boom": "^9.1.0",
     "body-parser": "^1.19.0",
