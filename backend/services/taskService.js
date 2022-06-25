@@ -1,3 +1,4 @@
+const formatDate = require('../helpers/formatDate');
 const taskModel = require('../models/taskModel');
 
 const getAll = async () => {
@@ -12,12 +13,11 @@ const getById = async (id) => {
 
 const addOne = async (body) => {
   const tasks = await taskModel.getAll();
-  const sameName = ({ name }) => name === body.name;
-  const taskExists = tasks.some(sameName);
-  if (taskExists) return false;
   const id = tasks.length + 1;
-  const response = await taskModel.addOne({ ...body, id });
-  return response;
+  const newDate = formatDate(new Date());
+  const newTask = { ...body, id, newDate };
+  await taskModel.addOne(newTask);
+  return newTask;
 };
 
 const putById = async (body) => {
@@ -25,8 +25,8 @@ const putById = async (body) => {
   const sameId = ({ id }) => id === body.id;
   const taskExists = tasks.some(sameId);
   if (!taskExists) return false;
-  const response = await taskModel.putById(body);
-  return response;
+  await taskModel.putById(body);
+  return body;
 };
 
 const deleteById = async (id) => {
