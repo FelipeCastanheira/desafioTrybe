@@ -1,4 +1,5 @@
 import React from 'react';
+import { destroy, getAll, post } from '../helpers/apiFunctions';
 import Title from './Title';
 import Type from './Type';
 
@@ -7,7 +8,12 @@ class Tasks extends React.Component {
     super();
     this.state = {
       tasks: [],
+      newTitle: '',
+      isButtonDisabled: true,
+      isLoading: false,
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleAddTask = this.handleAddTask.bind(this);
   }
 
   componentDidMount() {
@@ -15,27 +21,63 @@ class Tasks extends React.Component {
   }
 
   getTasks = async () => {
-    this.setState({ tasks: [] }); // Chamar API
+    this.setState({ tasks: await getAll() }); // Chamar API
+  };
+
+  handleChange({ target }) {
+    this.setState({ newTitle: target.value }, () => {
+      const MIN_LENGTH = 5;
+      const { newTitle } = this.state;
+      const invalidName = newTitle.length < MIN_LENGTH;
+      this.setState({ isButtonDisabled: invalidName });
+    });
+  };
+
+  handleAddTask = async (event) => {
+    event.preventDefault();
+    const { newTitle } = this.state;
+    this.setState({ isLoading: true, newTitle: '' });
+    await post({ title: newTitle });
+    await this.getTasks();
+    this.setState({ isLoading: false });
   };
 
   handleDestroy = async (id) => {
-    console.log(id); // Deletar por API
+    await destroy(id);
     this.getTasks();
   };
 
   render() {
-    const { tasks } = this.state;
+    const { tasks, newTitle, isButtonDisabled, isLoading } = this.state;
     return (
       <main>
+        <form>
+          <input
+            type="text"
+            value={ newTitle }
+            name="newTitle"
+            placeholder="Tarefa"
+            data-testid="new-title"
+            onChange={ this.handleChange }
+          />
+          <button
+            disabled={ isButtonDisabled }
+            type="button"
+            data-testid="create-button"
+            onClick={ this.handleAddTask }
+          >Criar</button>
+        </form>
+        { isLoading && <h3>Carregando...</h3>}
         <div>Ordenar</div>
-        <div>Inserir</div>
         <section>
           { tasks.map(({ id, title, date, type }) => (
             <div key={ id }>
               <Title title={ title } />
               <h5>{ date }</h5>
               <Type id={ id } type={ type } />
-              <button type="button" onClick={ () => handleDestroy(id) }>X</button>
+              <button type="button" onClick={ async () => await this.handleDestroy(id) }>
+                X
+              </button>
             </div>
           )) }
         </section>

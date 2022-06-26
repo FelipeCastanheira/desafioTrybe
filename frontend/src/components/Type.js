@@ -1,4 +1,5 @@
 import React from 'react';
+import { put } from '../helpers/apiFunctions';
 
 class Type extends React.Component {
   constructor() {
@@ -7,13 +8,14 @@ class Type extends React.Component {
       type: this.props.type,
     };
   }
-  handleChange = ({ value }) => {
+  handleChange = async ({ value }) => {
     this.setState({ type: value }); // update by API
+    await put(this.props.id);
   };
   render() {
     const { type } = this.state;
     return (
-      <select onChange={ ({ target }) => handleChange(target) } value={ type }>
+      <select onChange={ async ({ target }) => await this.handleChange(target) } value={ type }>
         <option value="todo" >Pendente</option>
         <option value="doing" >Em Andamento</option>
         <option value="done" >Pronto</option>
