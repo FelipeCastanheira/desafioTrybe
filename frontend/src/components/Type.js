@@ -16,9 +16,9 @@ class Type extends React.Component {
     const { type } = this.state;
     return (
       <select onChange={ async ({ target }) => await this.handleChange(target) } value={ type }>
-        <option value="todo" >Pendente</option>
-        <option value="doing" >Em Andamento</option>
-        <option value="done" >Pronto</option>
+        <option value="a fazer" >Pendente</option>
+        <option value="fazendo" >Em Andamento</option>
+        <option value="feito" >Pronto</option>
       </select>
     );
   }
