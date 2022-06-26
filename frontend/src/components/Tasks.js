@@ -11,6 +11,7 @@ class Tasks extends React.Component {
       newTitle: '',
       isButtonDisabled: true,
       isLoading: false,
+      sortBy: 'type',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleAddTask = this.handleAddTask.bind(this);
@@ -47,8 +48,13 @@ class Tasks extends React.Component {
     this.getTasks();
   };
 
+  handleSort = (a, b) => {
+    const { sortBy } = this.state;
+    return a[sortBy] - b[sortBy];
+  } 
+
   render() {
-    const { tasks, newTitle, isButtonDisabled, isLoading } = this.state;
+    const { tasks, newTitle, isButtonDisabled, isLoading, sortBy } = this.state;
     return (
       <main>
         <form>
@@ -68,9 +74,16 @@ class Tasks extends React.Component {
           >Criar</button>
         </form>
         { isLoading && <h3>Carregando...</h3>}
-        <div>Ordenar</div>
+        <select
+          onChange={  ({ target }) => this.setState({ sortBy: target.value }) }
+          value={ sortBy }
+        >
+          <option value="title" >Ordem alfabética</option>
+          <option value="date" >Mais recentes</option>
+          <option value="type" >Por status</option>
+        </select>
         <section>
-          { tasks.map(({ id, title, date, type }) => (
+          { tasks.sort(this.handleSort).map(({ id, title, date, type }) => (
             <div key={ id }>
               <Title title={ title } />
               <h5>{ date }</h5>
