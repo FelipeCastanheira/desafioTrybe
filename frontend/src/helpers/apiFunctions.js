@@ -9,13 +9,17 @@ export const getAll = async () => {
 };
 
 export const post = async (title) => {
-  const response = await axios.post(baseUrl); // Missing body
+  const body = {
+    title,
+    type: 'a fazer',
+  };
+  const response = await axios.post(baseUrl, body);
   console.log(response);
   return response;
 };
 
 export const put = async (id, type) => {
-  const response = await axios.put(`${baseUrl}/${id}`); // Missing body
+  const response = await axios.put(`${baseUrl}/${id}`, { type });
   console.log(response);
   return response;
 };
