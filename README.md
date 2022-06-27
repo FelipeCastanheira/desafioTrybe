@@ -3,16 +3,16 @@ Desafio Full Stack - Task List Trybe
 
 --------------------- // ---------------------
 ## Requisitos do Desafio:
-Front-End em React;
-Back-End em NodeJS, com MySQL;
-Arquitetura em camadas;
-Funcionalidades:
-Visualizar a lista de tarefas;
-Esta lista deve ser ordenável por ordem alfabética, data de criação ou por status;
-Inserir uma nova tarefa na lista;
-Remover uma tarefa da lista;
-Atualizar uma tarefa da lista;
-A tarefa deve possuir um status editável: pendente, em andamento ou pronto;
+Front-End em React (OK);
+Back-End em NodeJS, com MySQL (OK);
+Arquitetura em camadas (OK);
+Funcionalidades (OK):
+Visualizar a lista de tarefas (OK);
+Esta lista deve ser ordenável por ordem alfabética, data de criação ou por status (OK);
+Inserir uma nova tarefa na lista (OK);
+Remover uma tarefa da lista (OK);
+Atualizar uma tarefa da lista (OK);
+A tarefa deve possuir um status editável: pendente, em andamento ou pronto (OK);
 
 ## Critérios:
 Atendimento aos requisitos técnicos e funcionais;
