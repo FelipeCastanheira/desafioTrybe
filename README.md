@@ -25,3 +25,16 @@ Separação do front e backend;
 Mensagens de commits bem descritas e commits com um escopo nítido;
 Referências de códigos de terceiros;
 Instruções nítidas no README do projeto para setup e execução da aplicação e dos testes.
+
+## Instruções:
+Backend:
+Entrar na pasta de backend e rodar o comando:
+npm install
+Comandos para rodar o MySQL no Docker:
+docker-compose up -d
+docker exec -it task_manager bash
+
+Frontend:
+npm install axios
+npm install
+npm start
