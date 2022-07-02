@@ -1,6 +1,7 @@
 const express = require('express');
 const idHandler = require('./middlewares/idHandler');
 const titleHandler = require('./middlewares/titleHandler');
+const taskController = require('./controllers/taskController');
 
 const router = express.Router();
 
