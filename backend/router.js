@@ -1,5 +1,5 @@
 const express = require('express');
-const idHandler = require('./middlewares/idHandler');
+// const idHandler = require('./middlewares/idHandler');
 const titleHandler = require('./middlewares/titleHandler');
 const taskController = require('./controllers/taskController');
 
@@ -9,9 +9,9 @@ router.get('/tasks/:id', taskController.getById);
 
 router.get('/tasks', taskController.getAll);
 
-router.post('/tasks', idHandler, titleHandler, taskController.addOne);
+router.post('/tasks', titleHandler, taskController.addOne);
 
-router.put('/tasks/:id', idHandler, taskController.putById);
+router.put('/tasks/:id', taskController.putById);
 
 router.delete('/tasks/:id', taskController.deleteById);
 
