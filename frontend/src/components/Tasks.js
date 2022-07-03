@@ -51,7 +51,10 @@ class Tasks extends React.Component {
 
   handleSort = (a, b) => {
     const { sortBy } = this.state;
-    return a[sortBy] - b[sortBy];
+    if (a[sortBy] < b[sortBy]) {
+      return -1;
+    }
+    return 1;
   } 
 
   render() {
@@ -80,12 +83,12 @@ class Tasks extends React.Component {
           value={ sortBy }
         >
           <option value="title" >Ordem alfabética</option>
-          <option value="date" >Mais recentes</option>
+          <option value="date" >Por data</option>
           <option value="type" >Por status</option>
         </select>
         <section>
           { tasks.sort(this.handleSort).map(({ id, title, date, type }) => (
-            <div key={ id }>
+            <div key={ title }>
               <Title title={ title } />
               <h5>{ date }</h5>
               <Type id={ id } type={ type } />
