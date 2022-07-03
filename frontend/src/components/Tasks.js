@@ -22,6 +22,7 @@ class Tasks extends React.Component {
   }
 
   getTasks = async () => {
+    // await getAll();
     this.setState({ tasks: await getAll() }); // Chamar API
   };
 

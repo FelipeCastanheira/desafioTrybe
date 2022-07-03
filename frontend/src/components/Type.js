@@ -5,12 +5,15 @@ class Type extends React.Component {
   constructor() {
     super();
     this.state = {
-      type: this.props.type,
+      type: '',
     };
+  }
+  componentDidMount() {
+    this.setState({ type: this.props.type });
   }
   handleChange = async ({ value }) => {
     this.setState({ type: value }); // update by API
-    await put(this.props.id);
+    await put(this.props.id, { type: value });
   };
   render() {
     const { type } = this.state;
