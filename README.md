@@ -30,6 +30,7 @@ Instruções nítidas no README do projeto para setup e execução da aplicaçã
 Backend:
 Entrar na pasta de backend e rodar o comando:
 npm install
+npm install cors
 Comandos para rodar o MySQL no Docker:
 docker-compose up -d
 docker exec -it task_manager bash
