@@ -86,9 +86,9 @@ class Tasks extends React.Component {
           <option value="date" >Por data</option>
           <option value="type" >Por status</option>
         </select>
-        <section>
+        <section className="task-container">
           { tasks.sort(this.handleSort).map(({ id, title, date, type }) => (
-            <div key={ title }>
+            <div key={ title } className="task-card">
               <Title title={ title } />
               <h5>{ date }</h5>
               <Type id={ id } type={ type } />
