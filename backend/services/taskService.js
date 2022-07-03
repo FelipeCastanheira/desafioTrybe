@@ -15,7 +15,7 @@ const addOne = async (body) => {
   const tasks = await taskModel.getAll();
   const id = tasks.length + 1;
   const newDate = formatDate(new Date());
-  const newTask = { ...body, id, newDate };
+  const newTask = { ...body, id, date: newDate };
   await taskModel.addOne(newTask);
   return newTask;
 };
