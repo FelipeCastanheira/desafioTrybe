@@ -19,10 +19,10 @@ const getById = async (id) => {
 
 // POST /tasks
 const addOne = async (body) => {
-  const { id, title, date, type } = body;
+  const { title, date, type } = body;
   await connection.execute(
-    'INSERT INTO TaskManager.tasks (id, title, date, type) VALUES (?, ?, ?, ?);',
-    [id, title, date, type],
+    'INSERT INTO TaskManager.tasks (title, date, type) VALUES (?, ?, ?);',
+    [title, date, type],
   );
   return body;
 };
