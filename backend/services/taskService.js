@@ -12,10 +12,8 @@ const getById = async (id) => {
 };
 
 const addOne = async (body) => {
-  const tasks = await taskModel.getAll();
-  const id = tasks.length + 1;
   const newDate = formatDate(new Date());
-  const newTask = { ...body, id, date: newDate };
+  const newTask = { ...body, date: newDate };
   await taskModel.addOne(newTask);
   return newTask;
 };

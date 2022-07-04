@@ -13,7 +13,7 @@ class Type extends React.Component {
   }
   handleChange = async ({ value }) => {
     this.setState({ type: value }); // update by API
-    await put(this.props.id, { type: value });
+    await put(this.props.id, value);
   };
   render() {
     const { type } = this.state;
